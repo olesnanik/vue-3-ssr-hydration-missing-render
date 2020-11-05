@@ -11,6 +11,8 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
+    "experimentalDecorators": true,
+    "noImplicitAny": false,
     "types": [
       "webpack-env"
     ],

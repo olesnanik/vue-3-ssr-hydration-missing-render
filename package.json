@@ -4,13 +4,21 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "rimraf dist && yarn build:server && yarn build:client",
+    "build:server": "cross-env SSR=true vue-cli-service build --dest dist/server --mode development",
+    "build:client": "vue-cli-service build --dest dist/client --mode development",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^3.0.0",
-    "vue-router": "^4.0.0-0"
+    "vue-router": "^4.0.0-0",
+    "@vue/server-renderer": "^3.0.0",
+    "class-transformer": "^0.3.1",
+    "express": "^4.17.1",
+    "reflect-metadata": "^0.1.13",
+    "webpack-manifest-plugin": "^2.2.0",
+    "webpack-node-externals": "^2.5.2"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.33.0",
@@ -29,7 +37,10 @@
     "node-sass": "^4.12.0",
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.2",
-    "typescript": "~3.9.3"
+    "typescript": "~3.9.3",
+    "cross-env": "^7.0.2",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11"
   },
   "eslintConfig": {
     "root": true,
@@ -47,6 +58,13 @@
       "ecmaVersion": 2020
     },
     "rules": {}
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "arrowParens": "avoid",
+    "printWidth": 100
   },
   "browserslist": [
     "> 1%",
