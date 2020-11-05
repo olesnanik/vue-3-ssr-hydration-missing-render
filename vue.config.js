@@ -36,18 +36,5 @@ module.exports = {
         maxChunks: 1
       })
     )
-    // webpackConfig.plugins.delete("friendly-errors");
-
-    // console.log(webpackConfig.toConfig())
-  },
-  devServer: {
-    inline: true,
-    hot: true,
-    stats: 'minimal',
-    overlay: true,
-    disableHostCheck: true,
-    host: process.env.APP_HOST,
-    port: process.env.APP_PORT,
-    public: `${process.env.VUE_APP_DEV_SERVER_URL}:${process.env.APP_PORT}`
   }
 }
