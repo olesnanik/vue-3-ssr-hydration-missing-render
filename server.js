@@ -14,8 +14,8 @@ server.use('/js', express.static(path.join(__dirname, '/dist/client', 'js')))
 server.use('/css', express.static(path.join(__dirname, '/dist/client', 'css')))
 
 server.get(['/*'], async (req, res) => {
-  const app = await createApp({ url: req.url })
-  let appContent = await renderToString(app)
+  const app = await createApp()
+  const appContent = await renderToString(app)
 
   fs.readFile(path.join(__dirname, '/dist/client/index.html'), (err, html) => {
     if (err) {
@@ -27,9 +27,5 @@ server.get(['/*'], async (req, res) => {
     res.send(html)
   })
 })
-
-console.log(`
-  You can navigate to http://localhost:80
-`)
 
 server.listen(80)
